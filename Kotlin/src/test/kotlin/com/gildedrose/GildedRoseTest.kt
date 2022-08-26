@@ -1,7 +1,6 @@
 package com.gildedrose
 
-import org.hamcrest.MatcherAssert.assertThat
-import org.hamcrest.Matchers.equalTo
+import org.junit.Assert.assertEquals
 import org.junit.jupiter.api.Test
 
 private const val DEXTERITY_VEST = "+5 Dexterity Vest"
@@ -10,52 +9,52 @@ class GildedRoseTest {
 
     @Test
     fun `all items have a sellIn property`() {
-        val items = arrayOf(Item(DEXTERITY_VEST, 10, 20))
+        val items = listOf(Item(DEXTERITY_VEST, 10, 20))
 
-        assertThat(items[0].sellIn, equalTo(10))
+        assertEquals(10, items[0].sellIn)
     }
 
     @Test
     fun `all items have a name`() {
-        val items = arrayOf(Item(DEXTERITY_VEST, 10, 20))
+        val items = listOf(Item(DEXTERITY_VEST, 10, 20))
 
-        assertThat(items[0].name, equalTo(DEXTERITY_VEST))
+        assertEquals(DEXTERITY_VEST, items[0].name)
     }
 
     @Test
     fun `all items have a quality property`() {
-        val items = arrayOf(Item(DEXTERITY_VEST, 10, 20))
+        val items = listOf(Item(DEXTERITY_VEST, 10, 20))
 
-        assertThat(items[0].quality, equalTo(20))
+        assertEquals(20, items[0].quality)
     }
 
     @Test
     fun `every day decrease all values for each item`() {
-        val items = arrayOf(Item(DEXTERITY_VEST, 10, 20))
+        val items = listOf(Item(DEXTERITY_VEST, 10, 20))
         val app = GildedRose(items)
         app.updateQuality()
-        assertThat(items[0].sellIn, equalTo(9))
-        assertThat(items[0].quality, equalTo(19))
+        assertEquals(9, items[0].sellIn)
+        assertEquals(19, items[0].quality)
     }
 
     @Test
     fun `when the recommended date has passed, the quality degrades twice as fast`() {
-        val items = arrayOf(Item(DEXTERITY_VEST, 0, 10))
+        val items = listOf(Item(DEXTERITY_VEST, 0, 10))
         val app = GildedRose(items)
         app.updateQuality()
 
-        assertThat(items[0].sellIn, equalTo(-1))
-        assertThat(items[0].quality, equalTo(8))
+        assertEquals(-1, items[0].sellIn)
+        assertEquals(8, items[0].quality)
     }
 
     @Test
     fun `the quality of the item is never negative`() {
-        val items = arrayOf(Item(DEXTERITY_VEST, -7, 0))
+        val items = listOf(Item(DEXTERITY_VEST, -7, 0))
         val app = GildedRose(items)
         app.updateQuality()
 
-        assertThat(items[0].sellIn, equalTo(-8))
-        assertThat(items[0].quality, equalTo(0))
+        assertEquals(-8, items[0].sellIn)
+        assertEquals(0, items[0].quality)
     }
 }
 

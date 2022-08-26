@@ -1,8 +1,6 @@
 package com.gildedrose
 
-
-import org.hamcrest.MatcherAssert.assertThat
-import org.hamcrest.Matchers.equalTo
+import org.junit.Assert.assertEquals
 import org.junit.jupiter.api.Test
 
 
@@ -12,11 +10,11 @@ class ConjuredItemTests {
 
     @Test
     fun `Conjured items degrade in quality twice as fast as normal items`() {
-        val items = arrayOf(Item(CONJURED_ITEMS, 3, 6))
+        val items = listOf(Item(CONJURED_ITEMS, 3, 6))
         val app = GildedRose(items)
         app.updateQuality()
 
-        assertThat(items[0].sellIn, equalTo(2))
-        assertThat(items[0].quality, equalTo(4))
+        assertEquals(2,items[0].sellIn)
+        assertEquals(4, items[0].quality)
     }
 }

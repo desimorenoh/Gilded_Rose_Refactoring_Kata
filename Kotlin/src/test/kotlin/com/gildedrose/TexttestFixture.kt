@@ -4,7 +4,7 @@ fun main(args: Array<String>) {
 
     println("OMGHAI!")
 
-    val items = arrayOf(
+    val items = listOf(
             Item("+5 Dexterity Vest", 10, 20), //
             Item("Aged Brie", 2, 0), //
             Item("Elixir of the Mongoose", 5, 7), //

@@ -5,16 +5,16 @@ private const val BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert"
 private const val AGED_BRIE = "Aged Brie"
 private const val CONJURED = "Conjured Mana Cake"
 
-class GildedRose(var items: Array<Item>) {
+class GildedRose(var items: List<Item>) {
 
     fun updateQuality() {
         items.indices.forEach { i ->
             val item = items[i]
-            updateItemQuality(item, i)
+            updateItemQuality(item)
         }
     }
 
-    private fun updateItemQuality(item: Item, i: Int) {
+    private fun updateItemQuality(item: Item) {
 
         val adjustQuality = 1
 
