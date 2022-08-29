@@ -1,17 +1,21 @@
 package com.gildedrose
 
-class AgedBrie(sellIn: Int, quality: Int) : Item("Aged Brie", sellIn, quality) {
+data class AgedBrie(val sellIn: Int, val quality: Int) : Item {
 
-    override fun updateQualityOfItems(item: Item, adjustQuality: Int) {
+    override fun updateQuality(): AgedBrie {
 
-        if (sellIn > 0) {
-            quality += adjustQuality
+        var newQuality = quality
+        var newSellIn = sellIn
+
+        if (newSellIn > 0) {
+            newQuality += 1
         } else {
-            quality += adjustQuality * 2
+            newQuality += 2
         }
-        sellIn--
-        if (quality > 50) {
-            quality = 50
+        newSellIn--
+        if (newQuality > 50) {
+            newQuality = 50
         }
+        return AgedBrie(newSellIn, newQuality)
     }
 }

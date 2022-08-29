@@ -1,16 +1,20 @@
 package com.gildedrose
 
-class BackstagePasses(sellIn: Int, quality: Int) : Item("Backstage passes to a TAFKAL80ETC concert", sellIn, quality) {
+data class BackstagePasses(val sellIn: Int, val quality: Int) : Item {
 
-    override fun updateQualityOfItems(item: Item, adjustQuality: Int) {
+    override fun updateQuality(): BackstagePasses {
 
-        sellIn--
-        if (sellIn < 0) {
-            quality = 0
-        } else if (sellIn < 6) {
-            quality += adjustQuality * 3
-        } else if (sellIn in 6..10) {
-            quality += adjustQuality * 2
+        var newSellIn = sellIn
+        var newQuality = quality
+
+        newSellIn--
+        if (newSellIn < 0) {
+            newQuality = 0
+        } else if (newSellIn < 6) {
+            newQuality += 3
+        } else if (newSellIn in 6..10) {
+            newQuality += 2
         }
+        return BackstagePasses(newSellIn, newQuality)
     }
 }

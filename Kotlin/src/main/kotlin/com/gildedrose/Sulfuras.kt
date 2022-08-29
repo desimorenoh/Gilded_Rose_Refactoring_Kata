@@ -1,7 +1,6 @@
 package com.gildedrose
 
-object Sulfuras : Item("Sulfuras, Hand of Ragnaros", 0, 80) {
+data class Sulfuras(val sellIn: Int, val quality: Int) : Item {
 
-    override fun updateQualityOfItems(item: Item, adjustQuality: Int) {
-    }
+    override fun updateQuality() = this
 }

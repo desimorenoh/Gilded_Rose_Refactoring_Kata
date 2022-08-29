@@ -1,9 +1,15 @@
 package com.gildedrose
 
-class Conjured(sellIn: Int, quality: Int) : Item("Conjured Mana Cake", sellIn, quality){
+data class Conjured(val sellIn: Int, val quality: Int) : Item {
 
-    override fun updateQualityOfItems(item: Item, adjustQuality: Int) {
-        sellIn--
-        quality -= adjustQuality * 2
+    override fun updateQuality() : Conjured {
+
+        var newSellIn = sellIn
+        var newQuality = quality
+
+        newSellIn--
+        newQuality-=2
+
+        return Conjured(newSellIn, newQuality)
     }
 }
