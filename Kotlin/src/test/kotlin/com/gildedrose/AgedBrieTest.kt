@@ -8,35 +8,32 @@ class AgedBrieTest {
 
     @Test
     fun `aged brie increases in quality the older it gets`() {
-        val items = listOf(AgedBrie(2, 0))
-        val app = GildedRose(items)
+        val agedBrie = AgedBrie(2, 0)
 
-        val updateQuality: List<Item> = app.updateQuality()
+        val updateAgedBrie: AgedBrie = agedBrie.updateQuality()
 
 
-        assertEquals(1, (updateQuality[0] as AgedBrie).sellIn)
-        assertEquals(1, (updateQuality[0] as AgedBrie).quality)
+        assertEquals(1, updateAgedBrie.sellIn)
+        assertEquals(1, updateAgedBrie.quality)
     }
 
     @Test
     fun `after the date of sale its quality increases 2 units per day`() {
-        val items = listOf(AgedBrie( 0, 2))
-        val app = GildedRose(items)
+        val agedBrie = AgedBrie(0, 2)
 
-        val updateQuality: List<Item> = app.updateQuality()
+        val updateAgedBrie: AgedBrie = agedBrie.updateQuality()
 
-        assertEquals(-1, (updateQuality[0] as AgedBrie).sellIn)
-        assertEquals(4, (updateQuality[0] as AgedBrie).quality)
+        assertEquals(-1, updateAgedBrie.sellIn)
+        assertEquals(4, updateAgedBrie.quality)
     }
 
     @Test
     fun `the quality of the item is never greater than 50`() {
-        val items = listOf(AgedBrie( 10, 50))
-        val app = GildedRose(items)
+        val agedBrie = AgedBrie( 10, 50)
 
-        val updateQuality: List<Item> = app.updateQuality()
+        val updateAgedBrie: AgedBrie = agedBrie.updateQuality()
 
-        assertEquals(9, (updateQuality[0] as AgedBrie).sellIn)
-        assertEquals(50, (updateQuality[0] as AgedBrie).quality)
+        assertEquals(9, updateAgedBrie.sellIn)
+        assertEquals(50, updateAgedBrie.quality)
     }
 }

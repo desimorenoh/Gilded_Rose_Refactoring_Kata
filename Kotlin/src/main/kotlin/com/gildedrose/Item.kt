@@ -5,3 +5,4 @@ interface Item {
     fun updateQuality(): Item
 
 }
+

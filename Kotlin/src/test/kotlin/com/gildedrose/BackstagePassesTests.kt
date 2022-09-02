@@ -7,34 +7,31 @@ class BackstagePassesTests {
 
     @Test
     fun `if the concert is 10 days or less away, the quality is increased by 2 units`() {
-        val items = listOf(BackstagePasses(10, 20))
-        val app = GildedRose(items)
+        val backstagePasses = BackstagePasses(10, 20)
 
-        val updateQuality: List<Item> = app.updateQuality()
+        val updateBackstagePasses = backstagePasses.updateQuality()
 
-        assertEquals(9, (updateQuality[0] as BackstagePasses).sellIn)
-        assertEquals(22, (updateQuality[0] as BackstagePasses).quality)
+        assertEquals(9, updateBackstagePasses.sellIn)
+        assertEquals(22, updateBackstagePasses.quality)
     }
 
     @Test
     fun `if the concert is 5 days or less away, the quality is increased by 3 units`() {
-        val items = listOf(BackstagePasses(6, 10))
-        val app = GildedRose(items)
+        val backstagePasses = BackstagePasses(6, 10)
 
-        val updateQuality: List<Item> = app.updateQuality()
+        val updateBackstagePasses = backstagePasses.updateQuality()
 
-        assertEquals(5, (updateQuality[0] as BackstagePasses).sellIn)
-        assertEquals(13, (updateQuality[0] as BackstagePasses).quality)
+        assertEquals(5, updateBackstagePasses.sellIn)
+        assertEquals(13, updateBackstagePasses.quality)
     }
 
     @Test
     fun `after the sale date, the quality drops to 0`() {
-        val items = listOf(BackstagePasses(0, 20))
-        val app = GildedRose(items)
+        val backstagePasses = BackstagePasses(0, 20)
 
-        val updateQuality: List<Item> = app.updateQuality()
+        val updateBackstagePasses = backstagePasses.updateQuality()
 
-        assertEquals(-1, (updateQuality[0] as BackstagePasses).sellIn)
-        assertEquals(0, (updateQuality[0] as BackstagePasses).quality)
+        assertEquals(-1, updateBackstagePasses.sellIn)
+        assertEquals(0, updateBackstagePasses.quality)
     }
 }

@@ -17,9 +17,9 @@ fun main(args: Array<String>) {
         "Conjured Mana Cake", 3, 6
     )
 
-    val app = GildedRose(listOf())
+    val app: GildedRose = GildedRose(listOf())
 
-    var days = 10
+    var days = 2
     if (args.isNotEmpty()) {
         days = Integer.parseInt(args[0]) + 1
     }

@@ -30,35 +30,32 @@ class RegularItemTest {
 
     @Test
     fun `every day decrease all values for each item`() {
-        val items = listOf(RegularItem(DEXTERITY_VEST, 10, 20))
-        val app = GildedRose(items)
+        val regularItem = RegularItem(DEXTERITY_VEST, 10, 20)
 
-        val updateQuality: List<Item> = app.updateQuality()
+        val updateRegularItem = regularItem.updateQuality()
 
-        assertEquals(9, (updateQuality[0] as RegularItem).sellIn)
-        assertEquals(19, (updateQuality[0] as RegularItem).quality)
+        assertEquals(9, updateRegularItem.sellIn)
+        assertEquals(19, updateRegularItem.quality)
     }
 
     @Test
     fun `when the recommended date has passed, the quality degrades twice as fast`() {
-        val items = listOf(RegularItem(DEXTERITY_VEST, 0, 10))
-        val app = GildedRose(items)
+        val regularItem = RegularItem(DEXTERITY_VEST, 0, 10)
 
-        val updateQuality: List<Item> = app.updateQuality()
+        val updateRegularItem = regularItem.updateQuality()
 
-        assertEquals(-1, (updateQuality[0] as RegularItem).sellIn)
-        assertEquals(8, (updateQuality[0] as RegularItem).quality)
+        assertEquals(-1, updateRegularItem.sellIn)
+        assertEquals(8, updateRegularItem.quality)
     }
 
     @Test
     fun `the quality of the item is never negative`() {
-        val items = listOf(RegularItem(DEXTERITY_VEST, -7, 0))
-        val app = GildedRose(items)
+        val regularItem = RegularItem(DEXTERITY_VEST, -7, 0)
 
-        val updateQuality: List<Item> = app.updateQuality()
+        val updateRegularItem = regularItem.updateQuality()
 
-        assertEquals(-8, (updateQuality[0] as RegularItem).sellIn)
-        assertEquals(0, (updateQuality[0] as RegularItem).quality)
+        assertEquals(-8, updateRegularItem.sellIn)
+        assertEquals(0, updateRegularItem.quality)
     }
 }
 
